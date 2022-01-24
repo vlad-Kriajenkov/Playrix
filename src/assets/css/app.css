@@ -187,6 +187,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
   line-height: 31px;
   color: #333333;
+  margin: 20px 0px 20px 0px;
 }
 .conteiner2__listValues {
   display: flex;
@@ -257,4 +258,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .wrapperColum {
   display: flex;
+}
+
+@media (max-width: 480px) {
+  .home__main {
+    margin: 0px 0px !important;
+    padding: 20px;
+  }
+
+  .main__converterContainer {
+    flex-direction: column;
+  }
+  .conteiner2__listValues {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .listValues__colum {
+    margin-right: 0px;
+    margin-bottom: 20px;
+  }
 }

@@ -1,4 +1,5 @@
 @import '_nullStyle';
+
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,500&display=swap');
 
 .home {
@@ -151,6 +152,7 @@
         font-size: 24px;
         line-height: 31px;
         color: #333333;
+        margin: 20px 0px 20px 0px;
     }
 
     &__listValues {
@@ -237,3 +239,6 @@
     display: flex;
     
 }
+
+
+@import '_media';

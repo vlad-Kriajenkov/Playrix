@@ -1,0 +1,124 @@
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+
+    
+}
+
+@media (max-width:650px) {
+}
+
+@media (max-width: 480px) {
+
+    .home {
+
+        &__header {
+        }
+    
+        &__main {
+            margin: 0px 0px !important;
+            padding: 20px;
+        }
+    }
+    .header {
+    
+        &__nameLogo {
+        }
+    
+        &__nameImg {
+        }
+    }
+    .main {
+    
+        &__conteiner1 {
+        }
+    
+        &__title {
+        }
+    
+        &__converterContainer {
+            flex-direction: column;
+        }
+    
+        &__conteiner2 {
+        }
+    }
+    .converterContainer {
+    
+        &__converterChanging {
+        }
+    
+        &__Btn {
+        }
+    
+        &__converterReceiving {
+        }
+    }
+    .converter {
+    
+        &__lable {
+        }
+    
+        &__input {
+        }
+    
+        &__select {
+        }
+    
+        &__infoOneValue {
+        }
+    
+        &__infoChanging {
+        }
+    }
+    .conteiner2 {
+    
+        &__title {
+        }
+    
+        &__listValues {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .listValues {
+    
+        &__colum {
+            margin-right: 0px;
+            margin-bottom: 20px;
+        }
+    }
+    .colum {
+    
+        &__name {
+        }
+    
+        &__listStaticNum {
+        }
+    
+        &__listDinamicNum {
+        }
+    }
+    .name {
+    
+        &__one {
+        }
+    
+        &__two {
+        }
+    }
+    .wrapperColum {
+    }
+
+}
+
