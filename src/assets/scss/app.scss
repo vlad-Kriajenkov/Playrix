@@ -19,6 +19,18 @@
         margin: 0px 50px;
         padding-top: 20px;
     }
+    &__footer{
+        font-family: "IBM Plex Sans";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 16px;
+        color: #333333;
+        -webkit-box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6);
+        -moz-box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6);
+        box-shadow: 0px -5px 5px -5px rgba(34, 60, 80, 0.6);
+        padding: 25px 50px;
+    }
 }
 .header {
 
@@ -169,6 +181,7 @@
         box-shadow: 0px 0.630645px 1.26129px rgba(97, 97, 97, 0.2), 0px 1.26129px 2.52258px rgba(97, 97, 97, 0.2);
         border-radius: 8px;
         padding: 10px;
+        position: relative;
     }
 }
 
@@ -232,12 +245,80 @@
         font-feature-settings: 'tnum' on, 'lnum' on;
         color: #737272;
         margin-left: 60px;
-
+    }
+    &__btn {
+        background: none;
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        img{
+            width: 17px;
+        }
     }
 }
 .wrapperColum{
     display: flex;
     
+}
+.active{
+    visibility: hidden;
+    
+}
+.activeH{
+    height: 40px;
+    transform: height 1s linear;
+}
+
+.main {
+
+    &__conteiner3 {
+    }
+}
+.conteinerWrapper{
+    display: flex;
+    
+}
+.conteiner3 {
+
+    &__title {
+        font-family: "IBM Plex Sans";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 31px;
+        margin: 20px 0px
+    }
+
+    &__iput {
+        input{
+            background: rgba(224, 224, 224, 0.5);
+            box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
+            border-radius: 14px;
+            height: 40px;
+            width: 290px;
+            padding: 20px;
+        }
+    }
+    &__button{
+        background: #FFFFFF;
+        box-shadow: 0px 1.09009px 2.18018px rgba(15, 86, 179, 0.18), 0px 2.18018px 4.36036px rgba(15, 86, 179, 0.18);
+        border-radius: 1000px;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+        margin-left: 10px;
+        img{
+            width: 20px;
+            margin: 0px 10px;
+        }
+    }
+    &__infoText{
+        font-family: "IBM Plex Sans";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 16px;
+        color: #333333;
+        margin: 20px 0px;
+    }
 }
 
 

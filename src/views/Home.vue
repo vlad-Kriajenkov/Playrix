@@ -54,7 +54,7 @@
                 Список стоимостей
               </div>
               <div class="conteiner2__listValues">
-                <div class="listValues__colum">
+                <div id="columH" class="listValues__colum">
                   <div class="colum__name">
                     <div class="name__one">
                       {{selected.title}}
@@ -64,7 +64,7 @@
                     </div>
                   </div>
                  <div class="wrapperColum">
-                    <div>
+                    <div id="colum">
                       <div 
                         class="colum__listStaticNum"
                         v-for="listCost, index in listCosts"
@@ -77,8 +77,15 @@
                       </div>
                     </div>
                   </div>
+                  <button 
+                  @click="show"
+                  class="colum__btn">
+                    <img src="../assets/img/close.svg" alt="">
+                  </button>
                 </div>
-                 <div class="listValues__colum">
+                 <div
+                 id="columH1"
+                 class="listValues__colum">
                   <div class="colum__name">
                     <div class="name__one">
                       {{selected2.title}}
@@ -88,7 +95,7 @@
                     </div>
                   </div>
                  <div class="wrapperColum">
-                    <div>
+                    <div id="colum1">
                       <div 
                         class="colum__listStaticNum"
                         v-for="listCost, index in listCosts1"
@@ -101,14 +108,40 @@
                       </div>
                     </div>
                   </div>
+                  <button 
+                   @click="show1"
+                  class="colum__btn">
+                    <img src="../assets/img/close.svg" alt="">
+                  </button>
                 </div>
-
               </div>
             </div>
+            <div class="main__conteiner3">
+              <div class="conteiner3__title">
+                Список истории курса
+              </div>
+              <div class="conteinerWrapper">
+                <div class="conteiner3__iput">
+                <input 
+                  v-model="serchData"
+                  type="text" name="" id="">
+                </div>
+                <button
+                @click="serchD"
+                class="conteiner3__button">
+                  <img src="../assets/img/search.svg" alt="">
+                </button>
+              </div>
+              <div class="conteiner3__infoText">
+                  Курс за {{serchData}} : 1 {{this.selected.title}} = {{valutes[this.selected2.title]}} {{this.selected2.title}} <br>
+                  Курс можно узнать за 14 дней от текущей даты 
+              </div>
+            </div>
+            
         </div>
-        <div>
-
-        </div>
+       <div class="home__footer">
+         <img src="../assets/img/logotype.svg" alt="">
+       </div>
     </div>
 </template>
 
@@ -119,7 +152,8 @@ export default {
     },
     data(){
         return{
-          valute: [],
+          valute: '',
+          valutes:'',
           books: [
             { title: "EUR" },
             { title: "UAH" },
@@ -129,9 +163,9 @@ export default {
           selected: { title: 'USD' },
           selected2:{ title: "RUB" },
           serch:'100',
+          serchData: '2022-01-17',
           result: '',
-          valute: '',
-          valute1:'',
+          
           sum: '',
           sum1: '',
           sum2: '',
@@ -156,16 +190,14 @@ export default {
             {stakeMoney: '500', allmani:''},
             {stakeMoney: '1000', allmani:''},
             {stakeMoney: '5000', allmani:''},
-          ]
+          ],
         }
     },
      mounted(){
-
       fetch('https://api.fastforex.io/fetch-multi?from=USD&to=EUR,UAH,RUB,USD&api_key=12d16f39b0-d44edd54de-r64egt')
         .then(response => response.json())
         .then(json =>  {
             this.valute = json.results
-            // console.log(this.valute)
           })
         .catch(err => console.error(err));    
     },
@@ -179,27 +211,53 @@ export default {
         temp1 = this.listCosts
         this.listCosts = this.listCosts1;
         this.listCosts1 = temp1;
-        
-
       },
+      show(){
+        document.getElementById('colum').classList.toggle('active')
+        document.getElementById('columH').classList.toggle('activeH')
+      },
+      show1(){
+        document.getElementById('colum1').classList.toggle('active')
+        document.getElementById('columH1').classList.toggle('activeH')
+      },
+      serchD(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        
+        for (let i = this.serchData; i < today; i++) {
+          const options = {method: 'GET', headers: {Accept: 'application/json'}};
+          fetch(`https://api.fastforex.io/historical?date=${this.serchData}&from=${this.selected.title}&to=${this.selected2.title}&api_key=&api_key=12d16f39b0-d44edd54de-r64egt`, options)
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              this.valutes = data.results
+              console.log(data);
+            });
+        }
+      }
     },
     watch:{
        
       serch(){
         const selec = 'USD';
         let summ = this.serch * this.valute[this.selected2.title] / this.valute[this.selected.title]
-        this.sum = summ;
+        this.sum = summ.toFixed(2);
 
         if (this.selected.title == selec) {
           let summ1 = 1 / this.valute[this.selected2.title]
-          this.sum1 = summ1;
+          this.sum1 = summ1.toFixed(2);
           console.log('sd')
         }else if (this.selected2.title == selec) {
           let summ1 = 1 * this.valute[this.selected2.title] / this.valute[this.selected.title]
-          this.sum1 = summ1;
+          this.sum1 = summ1.toFixed(2);
         } else{
           let summ1 = 1 * this.valute[this.selected2.title] / this.valute[this.selected.title]
-          this.sum1 = summ1;
+          this.sum1 = summ1.toFixed(2);
         }
    
         this.listCosts[0].allmani =  this.valute[this.selected2.title]* 1
@@ -221,10 +279,6 @@ export default {
         this.listCosts1[6].allmani = this.sum1 * 500
         this.listCosts1[7].allmani = this.sum1 * 1000
         this.listCosts1[8].allmani = this.sum1 * 5000
-
-        console.log(this.listCosts[0].stakeMoney )
-        console.log(this.serch)
-        console.log(this.valute.RUB)
       },
     }
     
